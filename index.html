@@ -188,3 +188,116 @@
 <script src="script.js"></script>
 </body>
 </html>
+const quizData = {
+    m1b: [
+        {
+            q: "Un niño de 8 años es capaz de clasificar sus juguetes en orden ascendente según su tamaño (seriación) y reconoce que al traspasar el agua de un recipiente ancho a uno alto y angosto la cantidad total de líquido se mantiene (conservación). ¿En qué etapa del desarrollo cognitivo de Piaget se ubica este menor?",
+            options: [
+                "Preoperacional, porque su lógica aún requiere la presencia física de los objetos de estudio.",
+                "Operaciones Concretas, porque demuestra descentración, reversibilidad y lógica sobre eventos tangibles.",
+                "Operaciones Formales, porque aplica el razonamiento lógico-deductivo ante la transformación de variables."
+            ],
+            correct: 1,
+            explain: `
+                <strong>Explicación Detallada:</strong><br>
+                • <strong>Opción Correcta (B):</strong> La etapa de <em>Operaciones Concretas (7 a 11 años)</em> se caracteriza por la adquisición de las operaciones mentales reversibles. El niño supera el egocentrismo preoperacional y logra la <strong>conservación</strong> (comprender que la cantidad no cambia aunque cambie la forma visual) y la <strong>seriación</strong> (ordenar por magnitudes).<br><br>
+                • <strong>Por qué la A es incorrecta:</strong> En la etapa <em>Preoperacional (2 a 7 años)</em> prima el pensamiento intuitivo y egocéntrico. El niño sufre de <em>centración</em> (solo se fija en la altura del vaso, concluyendo erróneamente que hay más agua).<br><br>
+                • <strong>Por qué la C es incorrecta:</strong> Las <em>Operaciones Formales (11+ años)</em> implican la capacidad de razonar sobre hipótesis abstractas y conceptos puramente lógicos sin necesidad de ver o manipular objetos reales.
+            `
+        },
+        {
+            q: "Un adolescente de 16 años expresa constante angustia porque cambia frecuentemente de grupo de amigos, prueba estilos de vestimenta opuestos y no logra decidir qué carrera universitaria estudiar. De acuerdo con la teoría psicosocial de Erik Erikson, ¿en qué crisis del desarrollo se encuentra?",
+            options: [
+                "Laboriosidad vs. Inferioridad",
+                "Identidad vs. Confusión de Roles",
+                "Intimidad vs. Aislamiento"
+            ],
+            correct: 1,
+            explain: `
+                <strong>Explicación Detallada:</strong><br>
+                • <strong>Opción Correcta (B):</strong> Durante la adolescencia (12 a 20 años), la crisis central según Erikson es <em>Identidad vs. Confusión de Roles</em>. La tarea principal es consolidar el autoconcepto, los valores y las metas futuras. La exploración inestable de roles y profesiones es el indicador clásico de esta crisis.<br><br>
+                • <strong>Por qué la A es incorrecta:</strong> <em>Laboriosidad vs. Inferioridad</em> corresponde a la etapa escolar (6 a 12 años), centrada en el sentimiento de competencia académica y social comparada con pares.<br><br>
+                • <strong>Por qué la C es incorrecta:</strong> <em>Intimidad vs. Aislamiento</em> ocurre en la adultez temprana (20 a 40 años), enfocada en establecer compromisos afectivos y relaciones de pareja duraderas.
+            `
+        },
+        {
+            q: "Un docente observa que un alumno de 7 años no puede resolver problemas aritméticos de dos dígitos por sí solo, pero lo logra cuando el maestro le estructura el procedimiento paso a paso mediante guías visuales. Conforme el niño gana destreza, el docente retira las guías. Desde la perspectiva de Lev Vygotsky, este proceso ejemplifica:",
+            options: [
+                "La asimilación de un esquema dentro de la estructura cognitiva previa del estudiante.",
+                "La aplicación de un andamiaje dentro de la Zona de Desarrollo Próximo (ZDP).",
+                "La condicionada extinción de una conducta dependiente mediante reforzamiento."
+            ],
+            correct: 1,
+            explain: `
+                <strong>Explicación Detallada:</strong><br>
+                • <strong>Opción Correcta (B):</strong> La <em>Zona de Desarrollo Próximo (ZDP)</em> es la distancia entre el nivel de desarrollo real (lo que hace solo) y el potencial (lo que logra con ayuda). El apoyo temporal y graduable del docente se denomina <strong>Andamiaje</strong> (Scaffolding), el cual se retira a medida que el alumno internaliza la habilidad.<br><br>
+                • <strong>Por qué la A es incorrecta:</strong> 'Asimilación' es un término constructivista de <em>Jean Piaget</em>, no de Vygotsky.<br><br>
+                • <strong>Por qué la C es incorrecta:</strong> Explicar el apoyo instruccional como 'extinción de conducta dependiente' responde al enfoque <em>Conductista Radical</em>, ignorando los mediadores socioculturales propuestos por Vygotsky.
+            `
+        }
+    ]
+};
+
+const currentIndices = { m1b: 0 };
+
+function renderQuestion(moduleKey) {
+    const questions = quizData[moduleKey];
+    const index = currentIndices[moduleKey];
+
+    if (!questions || index >= questions.length) {
+        document.getElementById(`quiz-${moduleKey}`).innerHTML = `
+            <div style="text-align:center; padding: 20px;">
+                <h3 style="color:var(--success); margin:0;">🎉 ¡Módulo Completado!</h3>
+                <p style="margin:5px 0 0 0; font-size:0.95rem;">Has repasado con éxito el banco profundo de preguntas de esta sección.</p>
+            </div>`;
+        return;
+    }
+
+    const data = questions[index];
+    document.getElementById(`q-${moduleKey}`).innerText = `${index + 1}. ${data.q}`;
+
+    const optionsContainer = document.getElementById(`opt-${moduleKey}`);
+    optionsContainer.innerHTML = "";
+
+    data.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(moduleKey, i, btn);
+        optionsContainer.appendChild(btn);
+    });
+
+    document.getElementById(`fb-${moduleKey}`).className = "feedback";
+    document.getElementById(`fb-${moduleKey}`).style.display = "none";
+    document.getElementById(`next-${moduleKey}`).style.display = "none";
+}
+
+function checkAnswer(moduleKey, selectedIndex, btn) {
+    const data = quizData[moduleKey][currentIndices[moduleKey]];
+    const buttons = document.querySelectorAll(`#opt-${moduleKey} .option-btn`);
+    const feedback = document.getElementById(`fb-${moduleKey}`);
+    
+    buttons.forEach(b => b.disabled = true);
+
+    if (selectedIndex === data.correct) {
+        btn.classList.add("correct");
+        feedback.className = "feedback show success";
+        feedback.innerHTML = `<strong>¡Respuesta Correcta!</strong><br>${data.explain}`;
+    } else {
+        btn.classList.add("incorrect");
+        buttons[data.correct].classList.add("correct");
+        feedback.className = "feedback show danger";
+        feedback.innerHTML = `<strong>Respuesta Incorrecta.</strong><br>${data.explain}`;
+    }
+
+    document.getElementById(`next-${moduleKey}`).style.display = "inline-block";
+}
+
+function nextQuestion(moduleKey) {
+    currentIndices[moduleKey]++;
+    renderQuestion(moduleKey);
+}
+
+window.onload = () => {
+    renderQuestion('m1b');
+};
