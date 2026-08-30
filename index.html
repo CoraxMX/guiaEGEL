@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Interactiva EGEL+ Psicología</title>
+    <title>Guía Interactiva Avanzada - EGEL+ Psicología</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -78,6 +78,7 @@
         .question {
             font-weight: 600;
             margin-bottom: 16px;
+            font-size: 1.05rem;
         }
 
         .options {
@@ -118,10 +119,11 @@
 
         .feedback {
             margin-top: 16px;
-            padding: 12px;
+            padding: 16px;
             border-radius: 8px;
             display: none;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .feedback.show {
@@ -131,11 +133,13 @@
         .feedback.success {
             background: #dcfce7;
             color: #14532d;
+            border: 1px solid #86efac;
         }
 
         .feedback.danger {
             background: #fee2e2;
             color: #7f1d1d;
+            border: 1px solid #fca5a5;
         }
 
         .next-btn {
@@ -159,55 +163,18 @@
 
 <div class="container">
     <header>
-        <span class="badge">EGEL+ Psicología Completo</span>
-        <h1>Guía Maestro Interactiva</h1>
-        <p style="color: var(--text-muted)">10 Módulos de Repaso y Simulador de Reactivos Tipo CENEVAL</p>
+        <span class="badge">EGEL+ Psicología Avanzado</span>
+        <h1>Guía de Estudio Profunda</h1>
+        <p style="color: var(--text-muted)">Fundamentación Teórica y Análisis de Distractores CENEVAL</p>
     </header>
-
-    <!-- MÓDULO 0 -->
-    <div class="module-card">
-        <h2>Módulo 0: Reglas de Oro del Ceneval</h2>
-        <div class="summary-box">
-            <p><strong>1. Verbo Final:</strong> Lee primero la pregunta directa al final del caso.</p>
-            <p><strong>2. Parsimonia Conductual:</strong></p>
-            <ul>
-                <li>¿No sabe hacer la conducta? &rarr; <strong>Moldeamiento / Encadenamiento</strong></li>
-                <li>¿Ya la sabe pero la hace poco? &rarr; <strong>Reforzamiento</strong></li>
-                <li>¿Eliminar/Reducir conducta? &rarr; <strong>Extinción / Costo de Respuesta</strong></li>
-            </ul>
-        </div>
-        <div class="quiz-section" id="quiz-m0">
-            <div class="question" id="q-m0">Cargando...</div>
-            <div class="options" id="opt-m0"></div>
-            <div class="feedback" id="fb-m0"></div>
-            <button class="next-btn" id="next-m0" onclick="nextQuestion('m0')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 1 -->
-    <div class="module-card">
-        <h2>Módulo 1: Corrientes Psicológicas y Diagnóstico</h2>
-        <div class="summary-box">
-            <p><strong>Psicoanálisis:</strong> Conflictos inconscientes y mecanismos de defensa.<br>
-            <strong>Conductismo:</strong> Aprendizaje, reforzadores del ambiente.<br>
-            <strong>Cognitivo:</strong> Pensamientos automáticos y distorsiones.<br>
-            <strong>Sistémico:</strong> Homeostasis e interacción familiar (Paciente Identificado).</p>
-        </div>
-        <div class="quiz-section" id="quiz-m1">
-            <div class="question" id="q-m1">Cargando...</div>
-            <div class="options" id="opt-m1"></div>
-            <div class="feedback" id="fb-m1"></div>
-            <button class="next-btn" id="next-m1" onclick="nextQuestion('m1')">Siguiente Pregunta</button>
-        </div>
-    </div>
 
     <!-- MÓDULO 1B -->
     <div class="module-card">
-        <h2>Módulo 1B: Desarrollo Teórico</h2>
+        <h2>Módulo 1B: Psicología del Desarrollo (Piaget, Erikson y Vygotsky)</h2>
         <div class="summary-box">
-            <p><strong>Piaget:</strong> Sensoriomotora (Permanencia objeto) &rarr; Preoperacional (Egocentrismo) &rarr; Concretas (Conservación) &rarr; Formales (Abstracto).<br>
-            <strong>Erikson:</strong> 8 Crisis (ej. Laboriosidad vs Inferioridad en 6-12 años; Identidad vs Confusión en 12-20 años).<br>
-            <strong>Vygotsky:</strong> Zona de Desarrollo Próximo y Andamiaje.</p>
+            <p><strong>Piaget:</strong> Etapas (Sensoriomotora &rarr; Preoperacional &rarr; Operaciones Concretas &rarr; Operaciones Formales). La seriación y conservación caracterizan a las Operaciones Concretas.</p>
+            <p><strong>Erikson:</strong> 8 Crisis Psicosociales. En la etapa escolar destaca <em>Laboriosidad vs. Inferioridad</em> y en la adolescencia <em>Identidad vs. Confusión de Roles</em>.</p>
+            <p><strong>Vygotsky:</strong> Zona de Desarrollo Próximo (ZDP) y Andamiaje como apoyo estructurado del entorno hacia la autonomía.</p>
         </div>
         <div class="quiz-section" id="quiz-m1b">
             <div class="question" id="q-m1b">Cargando...</div>
@@ -216,325 +183,8 @@
             <button class="next-btn" id="next-m1b" onclick="nextQuestion('m1b')">Siguiente Pregunta</button>
         </div>
     </div>
-
-    <!-- MÓDULO 2 -->
-    <div class="module-card">
-        <h2>Módulo 2: Evaluación Psicológica y Psicometría</h2>
-        <div class="summary-box">
-            <p><strong>Fórmula Z:</strong> Z = (X - Media) / SD.<br>
-            <strong>Conversiones:</strong> CI (Media 100, SD 15), T (Media 50, SD 10), Escalar (Media 10, SD 3).<br>
-            <strong>Rango Promedio:</strong> Z entre -1.0 y +1.0.<br>
-            <strong>MMPI-2 Validez:</strong> L (Mentira/Perfección), F (Infrecuencia/Simulación F >= 80), K (Defensividad).</p>
-        </div>
-        <div class="quiz-section" id="quiz-m2">
-            <div class="question" id="q-m2">Cargando...</div>
-            <div class="options" id="opt-m2"></div>
-            <div class="feedback" id="fb-m2"></div>
-            <button class="next-btn" id="next-m2" onclick="nextQuestion('m2')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 2B -->
-    <div class="module-card">
-        <h2>Módulo 2B: Confiabilidad y Validez</h2>
-        <div class="summary-box">
-            <p><strong>Confiabilidad (Consistencia):</strong> Mismos reactivos &rarr; Alfa de Cronbach; Dos momentos &rarr; Test-Retest; Dos evaluadores &rarr; Kappa de Cohen.<br>
-            <strong>Validez (Mide lo que debe):</strong> Contenido, Constructo, Criterio (Concurrente/Predictiva).<br>
-            <em>Regla: Un test puede ser confiable sin ser válido, pero NO válido sin ser confiable.</em></p>
-        </div>
-        <div class="quiz-section" id="quiz-m2b">
-            <div class="question" id="q-m2b">Cargando...</div>
-            <div class="options" id="opt-m2b"></div>
-            <div class="feedback" id="fb-m2b"></div>
-            <button class="next-btn" id="next-m2b" onclick="nextQuestion('m2b')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 3 -->
-    <div class="module-card">
-        <h2>Módulo 3: Psicopatología (DSM-5)</h2>
-        <div class="summary-box">
-            <p><strong>Depresión vs Distimia:</strong> &ge; 2 semanas vs &ge; 2 años.<br>
-            <strong>TDAH:</strong> Antes de los 12 años en &ge; 2 ambientes.<br>
-            <strong>TAG vs Pánico:</strong> Preocupación &ge; 6 meses vs Ataques imprevistos y recurrentes.<br>
-            <strong>Clusters Personalidad:</strong> A (Raros), B (Dramáticos/Límite), C (Ansiosos).</p>
-        </div>
-        <div class="quiz-section" id="quiz-m3">
-            <div class="question" id="q-m3">Cargando...</div>
-            <div class="options" id="opt-m3"></div>
-            <div class="feedback" id="fb-m3"></div>
-            <button class="next-btn" id="next-m3" onclick="nextQuestion('m3')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 3B -->
-    <div class="module-card">
-        <h2>Módulo 3B: Psicopatología Adicional</h2>
-        <div class="summary-box">
-            <p><strong>Bipolar I vs II:</strong> Manía completa (hospitalización/psicosis) vs Hipomanía (no psicosis, 4 días) + Depresión.<br>
-            <strong>Psicosis (Tiempo):</strong> Psicótico Breve (&lt; 1 mes), Esquizofreniforme (1-6 meses), Esquizofrenia (&gt; 6 meses).<br>
-            <strong>TEPT vs Estrés Agudo:</strong> &ge; 1 mes vs &lt; 1 mes tras el trauma.</p>
-        </div>
-        <div class="quiz-section" id="quiz-m3b">
-            <div class="question" id="q-m3b">Cargando...</div>
-            <div class="options" id="opt-m3b"></div>
-            <div class="feedback" id="fb-m3b"></div>
-            <button class="next-btn" id="next-m3b" onclick="nextQuestion('m3b')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 4 -->
-    <div class="module-card">
-        <h2>Módulo 4: Intervención TCC y Campos</h2>
-        <div class="summary-box">
-            <p><strong>Operantes:</strong> Reforzamiento (+/-) incrementa conducta; Castigo (+/-) y Extinción la reducen.<br>
-            <strong>Organizacional:</strong> NOM-035-STPS-2018 (Factores de riesgo psicosocial).<br>
-            <strong>Crisis:</strong> Primeros Auxilios Psicológicos (PAP en primeras 72 hrs).</p>
-        </div>
-        <div class="quiz-section" id="quiz-m4">
-            <div class="question" id="q-m4">Cargando...</div>
-            <div class="options" id="opt-m4"></div>
-            <div class="feedback" id="fb-m4"></div>
-            <button class="next-btn" id="next-m4" onclick="nextQuestion('m4')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 4B -->
-    <div class="module-card">
-        <h2>Módulo 4B: Salud, Comunitaria y Forense</h2>
-        <div class="summary-box">
-            <p><strong>Salud:</strong> Modelo Biopsicosocial (Engel).<br>
-            <strong>Comunitaria:</strong> Prevención Primaria (antes), Secundaria (temprana), Terciaria (rehabilitación).<br>
-            <strong>Forense:</strong> Peritaje técnico para el juez; NO hay relación terapéutica ni confidencialidad plena hacia el evaluado.</p>
-        </div>
-        <div class="quiz-section" id="quiz-m4b">
-            <div class="question" id="q-m4b">Cargando...</div>
-            <div class="options" id="opt-m4b"></div>
-            <div class="feedback" id="fb-m4b"></div>
-            <button class="next-btn" id="next-m4b" onclick="nextQuestion('m4b')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 5 -->
-    <div class="module-card">
-        <h2>Módulo 5: Investigación y Estadística</h2>
-        <div class="summary-box">
-            <p><strong>Diseños:</strong> Experimental (manipula VI + asignación aleatoria), Cuasiexperimental (sin aleatorización).<br>
-            <strong>Paramétricas:</strong> 2 grupos independientes (t de Student), Antes y Después (t pareada), 3+ grupos (ANOVA), Relación (Pearson), Cualitativos (Chi-cuadrada).</p>
-        </div>
-        <div class="quiz-section" id="quiz-m5">
-            <div class="question" id="q-m5">Cargando...</div>
-            <div class="options" id="opt-m5"></div>
-            <div class="feedback" id="fb-m5"></div>
-            <button class="next-btn" id="next-m5" onclick="nextQuestion('m5')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 5B -->
-    <div class="module-card">
-        <h2>Módulo 5B: Estadística No Paramétrica</h2>
-        <div class="summary-box">
-            <p><strong>Supuestos:</strong> Normalidad (Shapiro-Wilk / Kolmogorov-Smirnov), Homogeneidad (Levene).<br>
-            <strong>Equivalencias (Datos no normales / Ordinales / Muestras pequeñas N&lt;30):</strong><br>
-            t independiente &rarr; <strong>U de Mann-Whitney</strong> | t pareada &rarr; <strong>Wilcoxon</strong> | ANOVA &rarr; <strong>Kruskal-Wallis</strong> | Pearson &rarr; <strong>Spearman</strong>.</p>
-        </div>
-        <div class="quiz-section" id="quiz-m5b">
-            <div class="question" id="q-m5b">Cargando...</div>
-            <div class="options" id="opt-m5b"></div>
-            <div class="feedback" id="fb-m5b"></div>
-            <button class="next-btn" id="next-m5b" onclick="nextQuestion('m5b')">Siguiente Pregunta</button>
-        </div>
-    </div>
-
-    <!-- MÓDULO 6 -->
-    <div class="module-card">
-        <h2>Módulo 6: Código Ético y Leyes</h2>
-        <div class="summary-box">
-            <p><strong>Consentimiento Informado:</strong> Firmado por cliente/tutores (+ Asentimiento en menores).<br>
-            <strong>Romper Confidencialidad:</strong> Suicidio, amenaza directa a tercero (Tarasoff), mandato judicial, abuso infantil.<br>
-            <strong>Custodia:</strong> Requiere firma de ambos padres salvo pérdida legal de patria potestad.</p>
-        </div>
-        <div class="quiz-section" id="quiz-m6">
-            <div class="question" id="q-m6">Cargando...</div>
-            <div class="options" id="opt-m6"></div>
-            <div class="feedback" id="fb-m6"></div>
-            <button class="next-btn" id="next-m6" onclick="nextQuestion('m6')">Siguiente Pregunta</button>
-        </div>
-    </div>
 </div>
-<script>
-    const quizData = {
-        m0: [
-            {
-                q: "Un caso de 3 párrafos describe detalladamente la sintomatología de un paciente con depresión. La última oración del reactivo dice: '¿Qué prueba psicológica se debe aplicar para confirmar la gravedad del cuadro?'. ¿En qué debes enfocar tu respuesta?",
-                options: ["En la técnica de intervención cognitiva", "En el diagnóstico del DSM-5", "En el instrumento de evaluación cuantitativa"],
-                correct: 2,
-                explain: "¡Correcto! Regla del Verbo Final: Aunque el caso hable de clínica y síntomas, la pregunta exige la selección de la prueba psicológica."
-            },
-            {
-                q: "Un estudiante universitario conoce las reglas gramaticales del inglés pero le da pena participar en clase y por eso habla poco. El profesor desea que participe con más frecuencia. ¿Qué procedimiento corresponde?",
-                options: ["Moldeamiento", "Reforzamiento Positivo", "Encadenamiento"],
-                correct: 1,
-                explain: "¡Correcto! Aplicaste el Principio de Parsimonia: El alumno YA TIENE la conducta en su repertorio (sabe hablar inglés), solo se requiere incrementar su frecuencia mediante reforzamiento."
-            }
-        ],
-        m1: [
-            {
-                q: "Un paciente acude a consulta por problemas de adicción al juego. Menciona que juega impulsivamente para escapar de la culpa que siente por no haber cuidado a su padre antes de morir. Desde el psicoanálisis, esta conducta se explica como:",
-                options: ["Un hábito condicionado mantenido por un programa de razón variable.", "Un mecanismo de defensa para contener la angustia del Superyó.", "Una distorsión cognitiva de tipo catastrofista."],
-                correct: 1,
-                explain: "¡Correcto! El psicoanálisis explica los síntomas como respuestas defensivas del Yo para lidiar con la angustia y la culpa del Superyó."
-            }
-        ],
-        m1b: [
-            {
-                q: "Un niño de 8 años es capaz de ordenar sus juguetes por tamaño y comprende que si vierte el agua de un vaso ancho a uno delgado sigue habiendo la misma cantidad. ¿En qué etapa de Piaget se encuentra?",
-                options: ["Preoperacional", "Operaciones Concretas", "Operaciones Formales"],
-                correct: 1,
-                explain: "¡Correcto! El logro de la conservación (masa/volumen) y la seriación/clasificación entre los 7 y 11 años define la etapa de Operaciones Concretas."
-            }
-        ],
-        m2: [
-            {
-                q: "Pedrito obtiene una puntuación directa de 35 en una prueba de memoria con Media=50 y SD=10. ¿Cuál es su Puntaje Z y en qué rango funcional se ubica?",
-                options: ["Z = -1.5 (Medio Bajo / Limítrofe)", "Z = -1.0 (Promedio)", "Z = -2.5 (Deficiente / Severo)"],
-                correct: 0,
-                explain: "¡Correcto! Z = (35 - 50) / 10 = -15 / 10 = -1.5. Un puntaje Z entre -1.01 y -2.0 se clasifica como Medio Bajo o Limítrofe."
-            }
-        ],
-        m2b: [
-            {
-                q: "Un investigador aplica una escala de autoeficacia a 100 empleados y calcula la correlación entre los reactivos pares e impares de la misma prueba en una sola aplicación. ¿Qué propiedad psicométrica está evaluando?",
-                options: ["Validez de Criterio Predictiva", "Confiabilidad por Consistencia Interna", "Confiabilidad Test-Retest"],
-                correct: 1,
-                explain: "¡Correcto! Analizar la correlación entre reactivos del mismo instrumento en un solo momento mide la Consistencia Interna."
-            }
-        ],
-        m3: [
-            {
-                q: "Un adulto refiere sentirse triste, con fatiga y baja autoestima casi todos los días desde hace 3 años. Manifiesta que puede ir a trabajar, pero no recuerda un periodo de más de 2 meses donde se sintiera bien. ¿Diagnóstico probable?",
-                options: ["Trastorno de Depresión Mayor", "Trastorno Depresivo Persistente (Distimia)", "Trastorno de Adaptación"],
-                correct: 1,
-                explain: "¡Correcto! Ánimo depresivo crónico presente durante por lo menos 2 años sin llegar a la gravedad incapacitante de la Depresión Mayor corresponde a Distimia."
-            }
-        ],
-        m3b: [
-            {
-                q: "Un paciente presenta alucinaciones auditivas e ideas delirantes de persecución de inicio repentino hace 2 semanas, tras lo cual reanuda por completo su funcionamiento previo. ¿Qué trastorno presentó?",
-                options: ["Trastorno Esquizofreniforme", "Trastorno Psicótico Breve", "Esquizofrenia paranoide"],
-                correct: 1,
-                explain: "¡Correcto! Los síntomas psicóticos con una duración mayor a 1 día pero menor a 1 mes corresponden a Trastorno Psicótico Breve."
-            }
-        ],
-        m4: [
-            {
-                q: "En una empresa textil se detecta un alto nivel de ausentismo y estrés por exceso de cargas de trabajo y jornadas prolongadas. ¿Qué normativa mexicana obliga a la empresa a intervenir sobre estos factores?",
-                options: ["NOM-035-STPS-2018", "NOM-004-SSA3-2012", "Código Ético del Psicólogo"],
-                correct: 0,
-                explain: "¡Correcto! La NOM-035 en México regula la identificación, análisis y prevención de los factores de riesgo psicosocial en los centros de trabajo."
-            }
-        ],
-        m4b: [
-            {
-                q: "Un psicólogo es contratado por un tribunal familiar para realizar una evaluación a dos padres en disputa por la custodia de su hijo. Al iniciar la primera sesión, ¿qué aclaración ética es indispensable?",
-                options: ["Garantizar confidencialidad absoluta sobre todo lo expuesto.", "Informar que los resultados se entregarán al juez y no hay confidencialidad plena hacia los evaluados.", "Pedir autorización para iniciar un proceso psicoterapéutico individual."],
-                correct: 1,
-                explain: "¡Correcto! En psicología forense, el cliente es el juez o tribunal. Por lo tanto, no existe secreto profesional absoluto con el evaluado."
-            }
-        ],
-        m5: [
-            {
-                q: "Un investigador aplica un taller de asertividad a un grupo de 40 alumnos y mide sus niveles de ansiedad social ANTES y DESPUÉS del taller (datos cuantitativos normales). ¿Qué prueba estadística debe elegir?",
-                options: ["t de Student para muestras independientes", "t de Student para muestras pareadas / dependientes", "ANOVA de un factor"],
-                correct: 1,
-                explain: "¡Correcto! Para comparar los puntajes numéricos de UN MISMO GRUPO evaluado en dos momentos (antes y después), la prueba correcta es t de Student pareada."
-            }
-        ],
-        m5b: [
-            {
-                q: "Un psicólogo quiere comparar la satisfacción laboral (medida en escala ordinal) entre 2 grupos independientes de trabajadores con una muestra de N=12 datos no normales. ¿Qué prueba debe usar?",
-                options: ["ANOVA", "U de Mann-Whitney", "Wilcoxon"],
-                correct: 1,
-                explain: "¡Correcto! Al violarse el supuesto de normalidad, tener muestra pequeña y variable ordinal, la alternativa no paramétrica a la t de Student de grupos independientes es la U de Mann-Whitney."
-            }
-        ],
-        m6: [
-            {
-                q: "Durante una consulta privada, un paciente adulto confiesa con detalles específicos que planea asesinar a su expareja esta misma noche y muestra el arma que compró. El psicólogo decide alertar a las autoridades e informar a la víctima. Su actuar es:",
-                options: ["Una violación grave al Código Ético por romper el secreto profesional.", "Correcto, porque el peligro inminente hacia un tercero justifica romper la confidencialidad.", "Incorrecto, debió pedir primero una orden judicial."],
-                correct: 1,
-                explain: "¡Correcto! El riesgo inminente de daño físico o muerte a terceros (Doctrina Tarasoff) es una de las excepciones legales y éticas para romper la confidencialidad."
-            }
-        ]
-    };
 
-    const currentIndices = {
-        m0: 0, m1: 0, m1b: 0, m2: 0, m2b: 0, m3: 0, m3b: 0, m4: 0, m4b: 0, m5: 0, m5b: 0, m6: 0
-    };
-
-    function renderQuestion(moduleKey) {
-        const questions = quizData[moduleKey];
-        const index = currentIndices[moduleKey];
-
-        if (!questions || index >= questions.length) {
-            document.getElementById(`quiz-${moduleKey}`).innerHTML = `
-                <div style="text-align:center; padding: 15px;">
-                    <h3 style="color:var(--success); margin:0;">🎉 ¡Módulo Completado!</h3>
-                    <p style="margin:5px 0 0 0; font-size:0.9rem;">Has dominado los reactivos clave de este bloque.</p>
-                </div>`;
-            return;
-        }
-
-        const data = questions[index];
-        document.getElementById(`q-${moduleKey}`).innerText = `${index + 1}. ${data.q}`;
-
-        const optionsContainer = document.getElementById(`opt-${moduleKey}`);
-        optionsContainer.innerHTML = "";
-
-        data.options.forEach((opt, i) => {
-            const btn = document.createElement("button");
-            btn.className = "option-btn";
-            btn.innerText = opt;
-            btn.onclick = () => checkAnswer(moduleKey, i, btn);
-            optionsContainer.appendChild(btn);
-        });
-
-        document.getElementById(`fb-${moduleKey}`).className = "feedback";
-        document.getElementById(`fb-${moduleKey}`).style.display = "none";
-        document.getElementById(`next-${moduleKey}`).style.display = "none";
-    }
-
-    function checkAnswer(moduleKey, selectedIndex, btn) {
-        const data = quizData[moduleKey][currentIndices[moduleKey]];
-        const buttons = document.querySelectorAll(`#opt-${moduleKey} .option-btn`);
-        const feedback = document.getElementById(`fb-${moduleKey}`);
-        
-        buttons.forEach(b => b.disabled = true);
-
-        if (selectedIndex === data.correct) {
-            btn.classList.add("correct");
-            feedback.className = "feedback show success";
-            feedback.innerText = data.explain;
-        } else {
-            btn.classList.add("incorrect");
-            buttons[data.correct].classList.add("correct");
-            feedback.className = "feedback show danger";
-            feedback.innerText = `Respuesta incorrecta. ${data.explain}`;
-        }
-
-        document.getElementById(`next-${moduleKey}`).style.display = "inline-block";
-    }
-
-    function nextQuestion(moduleKey) {
-        currentIndices[moduleKey]++;
-        renderQuestion(moduleKey);
-    }
-
-    window.onload = () => {
-        Object.keys(quizData).forEach(moduleKey => {
-            renderQuestion(moduleKey);
-        });
-    };
-</script>
+<script src="script.js"></script>
 </body>
 </html>
