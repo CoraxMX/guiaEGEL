@@ -27,18 +27,43 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         h1 {
             color: var(--primary);
             margin-bottom: 8px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
         }
 
         .module-card {
@@ -48,6 +73,11 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             border: 1px solid var(--border);
+            display: none;
+        }
+
+        .module-card.active {
+            display: block;
         }
 
         .badge {
@@ -60,19 +90,46 @@
             text-transform: uppercase;
         }
 
+        /* DISEÑO DE LA MINIGUÍA TEÓRICA */
         .summary-box {
-            background: #f1f5f9;
-            border-left: 4px solid var(--primary);
-            padding: 16px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+            background: #f8fafc;
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0 30px 0;
+            border-radius: 0 10px 10px 0;
             font-size: 0.95rem;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+
+        .theory-item {
+            margin-bottom: 16px;
+        }
+
+        .theory-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .theory-title {
+            font-weight: 700;
+            color: #1e293b;
+            display: inline-block;
+            margin-bottom: 4px;
         }
 
         .quiz-section {
             margin-top: 30px;
             border-top: 2px dashed var(--border);
-            padding-top: 20px;
+            padding-top: 25px;
         }
 
         .question {
@@ -142,8 +199,13 @@
             border: 1px solid #fca5a5;
         }
 
-        .next-btn {
+        .controls-container {
+            display: flex;
+            gap: 10px;
             margin-top: 16px;
+        }
+
+        .btn-action {
             background: var(--primary);
             color: white;
             border: none;
@@ -154,8 +216,12 @@
             display: none;
         }
 
-        .next-btn:hover {
+        .btn-action:hover {
             background: var(--primary-hover);
+        }
+
+        .btn-next-module {
+            background: var(--success);
         }
     </style>
 </head>
@@ -165,46 +231,257 @@
     <header>
         <span class="badge">EGEL+ Psicología Avanzado</span>
         <h1>Guía de Estudio Profunda</h1>
-        <p style="color: var(--text-muted)">Fundamentación Teórica y Análisis de Distractores CENEVAL</p>
+        <p style="color: var(--text-muted)">Fundamentación Teórica Extensa y Banco de Reactivos CENEVAL</p>
     </header>
 
+    <!-- NAVEGACIÓN ENTRE MÓDULOS -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchModule('m0')">M0: Reglas de Oro</button>
+        <button class="tab-btn" onclick="switchModule('m1')">M1: Corrientes</button>
+        <button class="tab-btn" onclick="switchModule('m1b')">M1B: Desarrollo</button>
+        <button class="tab-btn" onclick="switchModule('m2')">M2: Psicometría</button>
+        <button class="tab-btn" onclick="switchModule('m2b')">M2B: Confiabilidad y Validez</button>
+    </div>
+
+    <!-- MÓDULO 0 -->
+    <div class="module-card active" id="card-m0">
+        <h2>Módulo 0: Reglas de Oro del CENEVAL</h2>
+        <div class="summary-box">
+            <h3>📘 Fundamentación Estratégica para el Examen</h3>
+            
+            <div class="theory-item">
+                <span class="theory-title">1. La Regla del Verbo Final:</span>
+                <p>Los reactivos CENEVAL suelen presentar viñetas clínicas de 2 o 3 párrafos con abundante información redundante para generar sobrecarga cognitiva. <strong>Estrategia:</strong> Lee siempre la última frase de la viñeta antes de analizar el caso. Identifica la demanda exacta (ej. <em>¿Cuál es la técnica de intervención indicada?</em> vs. <em>¿Cuál es el diagnóstico funcional?</em>).</p>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">2. Principio de Parsimonia Conductual:</span>
+                <p>Para preguntas de Modificación de Conducta, evalúa la relación entre la capacidad actual del sujeto y el objetivo del tratamiento:</p>
+                <ul>
+                    <li><strong>Conducta Inexistente:</strong> Si el sujeto no posee la habilidad en su repertorio, se usa <em>Moldeamiento</em> (reforzamiento de aproximaciones sucesivas) o <em>Encadenamiento</em> (conectar eslabones de una secuencia).</li>
+                    <li><strong>Conducta Deficitaria en Frecuencia:</strong> Si el sujeto ya sabe ejecutar la conducta pero la realiza poco o con baja intensidad, la respuesta siempre implica <em>Reforzamiento Positivo o Negativo</em>.</li>
+                    <li><strong>Reducción o Eliminación:</strong> Si se busca extinguir una respuesta desadaptativa, se recurre a <em>Extinción</em> (retirar el reforzador que la mantiene), <em>Costo de Respuesta</em> (pérdida de un reforzador ante la conducta) o <em>Reforzamiento Diferencial (RDI / RDO)</em>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="quiz-m0">
+            <div class="question" id="q-m0">Cargando...</div>
+            <div class="options" id="opt-m0"></div>
+            <div class="feedback" id="fb-m0"></div>
+            <div class="controls-container">
+                <button class="btn-action" id="next-m0" onclick="nextQuestion('m0')">Siguiente Pregunta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULO 1 -->
+    <div class="module-card" id="card-m1">
+        <h2>Módulo 1: Corrientes Psicológicas y Diagnóstico</h2>
+        <div class="summary-box">
+            <h3>📘 Marco Teórico Integrado de Enfoques Clínicos</h3>
+
+            <div class="theory-item">
+                <span class="theory-title">• Modelo Psicoanalítico y Psicodinámico:</span>
+                <p>Enfocado en los <em>conflictos intrapsíquicos inconscientes</em> fijados en las etapas psicosexuales. El síntoma es interpretado como un compromiso entre los deseos del Ello y las exigencias del Superyó, mediado por los mecanismos de defensa del Yo (ej. represión, proyección, racionalización, formación reactiva).</p>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">• Modelo Conductual (Análisis Aplicado de la Conducta):</span>
+                <p>Concibe el comportamiento como el resultado directo de la <em>historia de aprendizaje y las contingencias ambientales</em> (Triple Relación de Contingencia: Estímulo Discriminativo &rarr; Respuesta &rarr; Estímulo Consecuente). No postula construcciones internas no observables para explicar el síntoma.</p>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">• Modelo Cognitivo (Beck / Ellis):</span>
+                <p>Postula que las emociones y conductas de una persona están determinadas por la forma en que estructura cognitivamente sus experiencias. La <strong>Tríada Cognitiva</strong> de Beck (visión negativa de sí mismo, del mundo y del futuro) genera <em>esquemas profundos disfuncionales</em> que desencadenan <em>pensamientos automáticos y distorsiones cognitivas</em> (catastrofización, inferencia arbitraria, sobregeneralización).</p>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">• Modelo Sistémico:</span>
+                <p>Entiende al individuo como miembro de un sistema interconectado (familia). Analiza las pautas comunicacionales, las fronteras o límites entre subgrupos, los roles y la tendencia del sistema a mantener la <em>homeostasis</em> funcional o disfuncional mediante bucles de retroalimentación.</p>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="quiz-m1">
+            <div class="question" id="q-m1">Cargando...</div>
+            <div class="options" id="opt-m1"></div>
+            <div class="feedback" id="fb-m1"></div>
+            <div class="controls-container">
+                <button class="btn-action" id="next-m1" onclick="nextQuestion('m1')">Siguiente Pregunta</button>
+            </div>
+        </div>
+    </div>
+
     <!-- MÓDULO 1B -->
-    <div class="module-card">
+    <div class="module-card" id="card-m1b">
         <h2>Módulo 1B: Psicología del Desarrollo (Piaget, Erikson y Vygotsky)</h2>
         <div class="summary-box">
-            <p><strong>Piaget:</strong> Sensoriomotora &rarr; Preoperacional &rarr; Operaciones Concretas (Conservación y Seriación) &rarr; Operaciones Formales (Pensamiento Abstracto).</p>
-            <p><strong>Erikson:</strong> 8 Crisis Psicosociales. Destacan <em>Laboriosidad vs. Inferioridad</em> (Escolar) e <em>Identidad vs. Confusión de Roles</em> (Adolescencia).</p>
-            <p><strong>Vygotsky:</strong> Zona de Desarrollo Próximo (ZDP) y Andamiaje como apoyo estructurado y temporal del entorno.</p>
+            <h3>📘 Fundamentación Profunda de los Autores Clave</h3>
+
+            <div class="theory-item">
+                <span class="theory-title">1. Jean Piaget – Desarrollo Cognitivo (Teoría Psicogenética):</span>
+                <p>El aprendizaje es un proceso de adaptación mediante <strong>Asimilación</strong> (incorporar nuevos datos a esquemas previos) y <strong>Acomodación</strong> (modificar esquemas internos ante nueva información). Etapas clave:</p>
+                <ul>
+                    <li><strong>Sensoriomotora (0-2 años):</strong> Permanencia del objeto y aprendizaje mediante acciones motrices directas.</li>
+                    <li><strong>Preoperacional (2-7 años):</strong> Surgimiento de la función simbólica, pero dominado por el <em>egocentrismo</em>, la <em>centración</em> (atender solo a un aspecto del estímulo) y la <em>irreversibilidad</em>.</li>
+                    <li><strong>Operaciones Concretas (7-11 años):</strong> Adquisición del pensamiento lógico aplicable a objetos reales. Hitos clave: <strong>Conservación</strong> (entender que la materia/volumen/peso no cambia aunque varíe la forma visual) y <strong>Seriación</strong> (capacidad de ordenar elementos siguiendo una dimensión como tamaño o peso).</li>
+                    <li><strong>Operaciones Formales (11+ años):</strong> Pensamiento abstracto, hipotético-deductivo y control sistemático de variables.</li>
+                </ul>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">2. Erik Erikson – Desarrollo Psicosocial (Crisis Específicas):</span>
+                <p>El desarrollo abarca 8 etapas caracterizadas por una <em>crisis psicosocial</em> entre las demandas individuales y el entorno social. Claves para CENEVAL:</p>
+                <ul>
+                    <li><strong>Laboriosidad vs. Inferioridad (Etapa Escolar, ~6 a 12 años):</strong> El niño debe desarrollar el sentido de competencia en tareas académicas y sociales frente a sus pares. El fracaso o comparación destructiva genera sentimientos de ineficacia e inferioridad.</li>
+                    <li><strong>Identidad vs. Confusión de Roles (Adolescencia, ~12 a 20 años):</strong> La tarea central es unificar el autoconcepto, los valores, la orientación vocacional y la identidad personal. La incapacidad para consolidarla resulta en la exploración inestable de roles.</li>
+                    <li><strong>Intimidad vs. Aislamiento (Adultez Temprana):</strong> Compromisos afectivos profundos y de pareja vs. el temor al compromiso personal.</li>
+                </ul>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">3. Lev Vygotsky – Teoría Sociocultural del Aprendizaje:</span>
+                <p>El desarrollo cognitivo es el resultado directo de las interacciones sociales y la mediación cultural mediante herramientas (principalmente el lenguaje):</p>
+                <ul>
+                    <li><strong>Zona de Desarrollo Próximo (ZDP):</strong> Brecha entre la <em>Zona de Desarrollo Real</em> (lo que el alumno puede hacer por sí solo de forma autónoma) y la <em>Zona de Desarrollo Potencial</em> (lo que logra bajo la guía de un adulto o par más capaz).</li>
+                    <li><strong>Andamiaje (Bruner/Vygotsky):</strong> La estructura temporal de apoyo, guía y recursos que un educador o terapeuta proporciona dentro de la ZDP. Conforme el sujeto internaliza el aprendizaje, el andamiaje se retira gradualmente para promover la autonomía.</li>
+                </ul>
+            </div>
         </div>
+
         <div class="quiz-section" id="quiz-m1b">
             <div class="question" id="q-m1b">Cargando...</div>
             <div class="options" id="opt-m1b"></div>
             <div class="feedback" id="fb-m1b"></div>
-            <button class="next-btn" id="next-m1b" onclick="nextQuestion('m1b')">Siguiente Pregunta</button>
+            <div class="controls-container">
+                <button class="btn-action" id="next-m1b" onclick="nextQuestion('m1b')">Siguiente Pregunta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULO 2 -->
+    <div class="module-card" id="card-m2">
+        <h2>Módulo 2: Evaluación Psicológica y Psicometría</h2>
+        <div class="summary-box">
+            <h3>📘 Estadística Aplicada a la Evaluación Clínica y Psicometría</h3>
+
+            <div class="theory-item">
+                <span class="theory-title">• Puntuaciones Normalizadas (Puntaje Z):</span>
+                <p>Indica a cuántas desviaciones estándar se encuentra una puntuación directa ($X$) con respecto a la media de la población de referencia ($\mu$).</p>
+                <p><strong>Fórmula:</strong> $Z = \frac{X - \text{Media}}{\text{Desviación Estándar (SD)}}$</p>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">• Reglas de Interpretación Normativa para CENEVAL:</span>
+                <ul>
+                    <li><strong>Z = 0:</strong> El sujeto se encuentra exactamente en la media poblacional (Percentil 50).</li>
+                    <li><strong>Z entre -1.0 y +1.0:</strong> Rango Promedio Normal (abarca aproximadamente el 68.26% de la población norma).</li>
+                    <li><strong>Z entre -1.01 y -2.0:</strong> Rango Limítrofe / Medio Bajo (indica posible riesgo o déficit leve).</li>
+                    <li><strong>Z < -2.0:</strong> Rango Deficiente / Deterioro Clinicamente Significativo (puntuaciones por debajo del percentil 2, requiriendo intervención inmediata).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="quiz-m2">
+            <div class="question" id="q-m2">Cargando...</div>
+            <div class="options" id="opt-m2"></div>
+            <div class="feedback" id="fb-m2"></div>
+            <div class="controls-container">
+                <button class="btn-action" id="next-m2" onclick="nextQuestion('m2')">Siguiente Pregunta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULO 2B -->
+    <div class="module-card" id="card-m2b">
+        <h2>Módulo 2B: Confiabilidad y Validez Metodológica</h2>
+        <div class="summary-box">
+            <h3>📘 Propiedades Psicométricas de los Instrumentos</h3>
+
+            <div class="theory-item">
+                <span class="theory-title">1. Confiabilidad (Precisión y Consistencia de la Medición):</span>
+                <ul>
+                    <li><strong>Consistencia Interna (Alfa de Cronbach / Omega de McDonald):</strong> Mide el grado de correlación que existe entre los reactivos individuales dentro de una misma prueba. (Valores óptimos $>0.75$).</li>
+                    <li><strong>Estabilidad Temporal (Test-Retest):</strong> Mide si la aplicación de un mismo instrumento al mismo grupo en dos momentos distintos arroja resultados equivalentes (Correlación r de Pearson).</li>
+                    <li><strong>Confiabilidad Interjueces (Kappa de Cohen):</strong> Mide el grado de acuerdo o concordancia objetiva entre dos o más evaluadores u observadores independientes al aplicar un registro conductual o rúbrica.</li>
+                </ul>
+            </div>
+
+            <div class="theory-item">
+                <span class="theory-title">2. Validez (Grado en que el Test Mide lo que Pretende Medir):</span>
+                <ul>
+                    <li><strong>Validez de Contenido:</strong> Representatividad de los ítems respecto al dominio conceptual (evaluada por juicio de expertos).</li>
+                    <li><strong>Validez de Criterio:</strong> Relación de la puntuación con un criterio externo (<em>Concurrente</em> si se mide al mismo tiempo, <em>Predictiva</em> si predice un rendimiento futuro).</li>
+                    <li><strong>Validez de Constructo:</strong> Grado en que la prueba demuestra empíricamente la existencia teórica de la variable (mediante Análisis Factorial, Validez Convergente y Discriminante).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quiz-section" id="quiz-m2b">
+            <div class="question" id="q-m2b">Cargando...</div>
+            <div class="options" id="opt-m2b"></div>
+            <div class="feedback" id="fb-m2b"></div>
+            <div class="controls-container">
+                <button class="btn-action" id="next-m2b" onclick="nextQuestion('m2b')">Siguiente Pregunta</button>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
     const quizData = {
-        m1b: [
+        m0: [
             {
-                q: "Un niño de 8 años es capaz de clasificar sus juguetes en orden ascendente según su tamaño (seriación) y reconoce que al traspasar el agua de un recipiente ancho a uno alto y angosto la cantidad total de líquido se mantiene (conservación). ¿En qué etapa del desarrollo cognitivo de Piaget se ubica este menor?",
+                q: "Un caso clínico extenso describe el historial de un paciente con fobia social. La última oración dice: '¿Cuál es la técnica operante indicada para incrementar su participación en exposiciones verbales si el paciente YA POSEE las habilidades sociales necesarias?'. ¿Qué debes responder?",
                 options: [
-                    "Preoperacional, porque su lógica aún requiere la presencia física de los objetos de estudio.",
-                    "Operaciones Concretas, porque demuestra descentración, reversibilidad y lógica sobre eventos tangibles.",
-                    "Operaciones Formales, porque aplica el razonamiento lógico-deductivo ante la transformación de variables."
+                    "Moldeamiento mediante aproximaciones sucesivas.",
+                    "Reforzamiento Positivo ante las conductas de participación.",
+                    "Diagnóstico diferencial de Trastorno de Personalidad Evitativa."
                 ],
                 correct: 1,
                 explain: `
                     <strong>Explicación Detallada:</strong><br>
-                    • <strong>Opción Correcta (B):</strong> La etapa de <em>Operaciones Concretas (7 a 11 años)</em> se caracteriza por la adquisición de operaciones mentales reversibles. El niño supera el egocentrismo preoperacional y logra la <strong>conservación</strong> (comprender que la cantidad no cambia aunque cambie la forma visual) y la <strong>seriación</strong> (ordenar por magnitudes).<br><br>
-                    • <strong>Por qué la A es incorrecta:</strong> En la etapa <em>Preoperacional (2 a 7 años)</em> prima el pensamiento intuitivo. El niño sufre de <em>centración</em> (solo se fija en la altura del vaso, concluyendo erróneamente que hay más agua).<br><br>
-                    • <strong>Por qué la C es incorrecta:</strong> Las <em>Operaciones Formales (11+ años)</em> implican razonar sobre hipótesis abstractas sin necesidad de manipular objetos reales.
+                    • <strong>Opción Correcta (B):</strong> Aplicaste el Principio de Parsimonia Conductual. Si el sujeto <em>ya tiene la conducta en su repertorio</em> (sabe hablar en público) pero la realiza con baja frecuencia por ansiedad, la técnica para incrementarla es el <strong>Reforzamiento Positivo</strong>.<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> El <em>Moldeamiento</em> se usa únicamente cuando la conducta NO EXISTE en el repertorio del sujeto y se debe enseñar desde cero.<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Ignora la Regla del Verbo Final. La pregunta pide expresamente la <em>técnica de intervención</em>, no el diagnóstico.
+                `
+            }
+        ],
+        m1: [
+            {
+                q: "Un paciente refiere que al recibir una crítica en su trabajo piensa de inmediato: 'No sirvo para nada, tarde o temprano me van a despedir'. Desde el enfoque cognitivo de Aaron Beck, esta manifestación se conceptualiza como:",
+                options: [
+                    "Un mecanismo de defensa impulsado por el Yo frente a la culpa del Superyó.",
+                    "Un pensamiento automático derivado de una distorsión cognitiva de sobregeneralización y catastrofización.",
+                    "Una respuesta condicionada aprendida por reforzamiento negativo."
+                ],
+                correct: 1,
+                explain: `
+                    <strong>Explicación Detallada:</strong><br>
+                    • <strong>Opción Correcta (B):</strong> Beck define los <strong>pensamientos automáticos</strong> como cogniciones espontáneas y absolutas que surgen ante situaciones específicas, fruto de esquemas disfuncionales previos y distorsiones (sobregeneralizar 'no sirvo para nada').<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> Es la explicación del modelo <em>Psicoanalítico/Dinámico</em>.<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Es la formulación teórica del <em>Conductismo Operante</em>.
+                `
+            }
+        ],
+        m1b: [
+            {
+                q: "Un niño de 8 años es capaz de clasificar sus juguetes en orden ascendente (seriación) y reconoce que al traspasar agua de un recipiente ancho a uno alto la cantidad se mantiene (conservación). ¿En qué etapa del desarrollo de Piaget se encuentra?",
+                options: [
+                    "Preoperacional",
+                    "Operaciones Concretas",
+                    "Operaciones Formales"
+                ],
+                correct: 1,
+                explain: `
+                    <strong>Explicación Detallada:</strong><br>
+                    • <strong>Opción Correcta (B):</strong> La etapa de <em>Operaciones Concretas (7 a 11 años)</em> se caracteriza por la reversibilidad del pensamiento, permitiendo los logros de <strong>conservación</strong> y <strong>seriación</strong> sobre objetos tangibles.<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> En la etapa <em>Preoperacional (2-7 años)</em> prima la centración e irreversibilidad (cree que en el vaso alto hay más agua).<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Las <em>Operaciones Formales (11+ años)</em> implican razonamiento hipotético-abstracto sin necesidad de manipular material concreto.
                 `
             },
             {
-                q: "Un adolescente de 16 años expresa constante angustia porque cambia frecuentemente de grupo de amigos, prueba estilos de vestimenta opuestos y no logra decidir qué carrera universitaria estudiar. De acuerdo con la teoría psicosocial de Erik Erikson, ¿en qué crisis del desarrollo se encuentra?",
+                q: "Un adolescente de 16 años expresa angustia porque cambia frecuentemente de grupo de amigos, prueba estilos de vestir opuestos y no decide qué carrera estudiar. Según Erikson, ¿qué crisis atraviesa?",
                 options: [
                     "Laboriosidad vs. Inferioridad",
                     "Identidad vs. Confusión de Roles",
@@ -213,40 +490,94 @@
                 correct: 1,
                 explain: `
                     <strong>Explicación Detallada:</strong><br>
-                    • <strong>Opción Correcta (B):</strong> Durante la adolescencia (12 a 20 años), la crisis central según Erikson es <em>Identidad vs. Confusión de Roles</em>. La tarea principal es consolidar el autoconcepto, los valores y las metas futuras. La exploración inestable de roles es el indicador clásico.<br><br>
-                    • <strong>Por qué la A es incorrecta:</strong> <em>Laboriosidad vs. Inferioridad</em> corresponde a la etapa escolar (6 a 12 años), centrada en el sentimiento de competencia académica comparada con pares.<br><br>
-                    • <strong>Por qué la C es incorrecta:</strong> <em>Intimidad vs. Aislamiento</em> ocurre en la adultez temprana (20 a 40 años), enfocada en establecer compromisos afectivos de pareja duraderos.
+                    • <strong>Opción Correcta (B):</strong> En la adolescencia (12 a 20 años), la crisis psicosocial principal según Erikson es <em>Identidad vs. Confusión de Roles</em>, caracterizada por la búsqueda y exploración del autoconcepto.<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> Corresponde a la etapa escolar (6 a 12 años).<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Ocurre en la adultez temprana (20 a 40 años) orientada a compromisos de pareja.
                 `
             },
             {
-                q: "Un docente observa que un alumno de 7 años no puede resolver problemas aritméticos de dos dígitos por sí solo, pero lo logra cuando el maestro le estructura el procedimiento paso a paso mediante guías visuales. Conforme el niño gana destreza, el docente retira las guías. Desde la perspectiva de Lev Vygotsky, este proceso ejemplifica:",
+                q: "Un alumno no logra resolver problemas matemáticos de dos dígitos solo, pero lo consigue cuando el docente le brinda esquemas visuales paso a paso, retirándolos gradualmente. Vygotsky define este apoyo como:",
                 options: [
-                    "La asimilación de un esquema dentro de la estructura cognitiva previa del estudiante.",
-                    "La aplicación de un andamiaje dentro de la Zona de Desarrollo Próximo (ZDP).",
-                    "La condicionada extinción de una conducta dependiente mediante reforzamiento."
+                    "Asimilación de esquemas cognitivos.",
+                    "Andamiaje dentro de la Zona de Desarrollo Próximo (ZDP).",
+                    "Extinción del comportamiento de dependencia."
                 ],
                 correct: 1,
                 explain: `
                     <strong>Explicación Detallada:</strong><br>
-                    • <strong>Opción Correcta (B):</strong> La <em>Zona de Desarrollo Próximo (ZDP)</em> es la distancia entre el nivel de desarrollo real (lo que hace solo) y el potencial (lo que logra con ayuda). El apoyo temporal y graduable del docente se denomina <strong>Andamiaje</strong> (Scaffolding).<br><br>
-                    • <strong>Por qué la A es incorrecta:</strong> 'Asimilación' es un término constructivista de <em>Jean Piaget</em>, no de Vygotsky.<br><br>
-                    • <strong>Por me la C es incorrecta:</strong> Explicar el apoyo como 'extinción de conducta dependiente' responde al enfoque <em>Conductista Radical</em>, ignorando los mediadores socioculturales.
+                    • <strong>Opción Correcta (B):</strong> La <em>ZDP</em> es la distancia entre el nivel real y el potencial. El soporte estructurado y temporal otorgado por el docente se denomina <strong>Andamiaje</strong>.<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> Es terminología constructivista de <em>Piaget</em>.<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> 'Extinción' pertenece al marco del <em>Conductismo Radical</em>.
+                `
+            }
+        ],
+        m2: [
+            {
+                q: "Un evaluado obtiene un Puntaje Directo de 35 en una prueba neuropsicológica (Media = 50, Desviación Estándar = 10). ¿Cuál es su Puntaje Z y la interpretación clínica correspondiente?",
+                options: [
+                    "Z = -1.5, correspondiente a un desempeño Medio Bajo o Limítrofe.",
+                    "Z = -1.0, correspondiente a un desempeño dentro de la norma promedio.",
+                    "Z = -2.5, correspondiente a un deterioro severo o deficiente."
+                ],
+                correct: 0,
+                explain: `
+                    <strong>Explicación Detallada:</strong><br>
+                    • <strong>Opción Correcta (A):</strong> Aplicando la fórmula Z = (X - Media) / SD &rarr; (35 - 50) / 10 = -15 / 10 = <strong>-1.5</strong>. Las puntuaciones entre -1.01 y -2.0 se ubican en el rango Medio Bajo / Limítrofe.<br><br>
+                    • <strong>Por qué la B es incorrecta:</strong> El rango promedio abarca estrictamente de -1.0 a +1.0.<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Un valor Z de -2.5 requeriría una puntuación directa de 25.
+                `
+            }
+        ],
+        m2b: [
+            {
+                q: "Se busca determinar el grado de consistencia entre dos observadores independientes al registrar la frecuencia de rabietas en un niño. ¿Qué coeficiente estadístico debe reportarse?",
+                options: [
+                    "Alfa de Cronbach",
+                    "Coeficiente Kappa de Cohen",
+                    "Prueba Test-Retest de Pearson"
+                ],
+                correct: 1,
+                explain: `
+                    <strong>Explicación Detallada:</strong><br>
+                    • <strong>Opción Correcta (B):</strong> La confiabilidad interjueces o interobservador se calcula a través del <strong>Coeficiente Kappa de Cohen</strong>.<br><br>
+                    • <strong>Por qué la A es incorrecta:</strong> Alfa de Cronbach evalúa la <em>consistencia interna</em> entre reactivos de una sola prueba.<br><br>
+                    • <strong>Por qué la C es incorrecta:</strong> Test-Retest evalúa la <em>estabilidad temporal</em> del mismo instrumento aplicado en dos momentos distintos al mismo sujeto.
                 `
             }
         ]
     };
 
-    const currentIndices = { m1b: 0 };
+    const moduleOrder = ['m0', 'm1', 'm1b', 'm2', 'm2b'];
+    const currentIndices = { m0: 0, m1: 0, m1b: 0, m2: 0, m2b: 0 };
+
+    function switchModule(moduleKey) {
+        document.querySelectorAll('.module-card').forEach(card => card.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+        document.getElementById(`card-${moduleKey}`).classList.add('active');
+        
+        const btnIndex = moduleOrder.indexOf(moduleKey);
+        if (btnIndex !== -1) {
+            document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+        }
+
+        renderQuestion(moduleKey);
+    }
 
     function renderQuestion(moduleKey) {
         const questions = quizData[moduleKey];
         const index = currentIndices[moduleKey];
 
         if (!questions || index >= questions.length) {
+            const nextModIndex = moduleOrder.indexOf(moduleKey) + 1;
+            const hasNextModule = nextModIndex < moduleOrder.length;
+            const nextModKey = hasNextModule ? moduleOrder[nextModIndex] : null;
+
             document.getElementById(`quiz-${moduleKey}`).innerHTML = `
                 <div style="text-align:center; padding: 20px;">
                     <h3 style="color:var(--success); margin:0;">🎉 ¡Módulo Completado!</h3>
-                    <p style="margin:5px 0 0 0; font-size:0.95rem;">Has repasado con éxito el banco profundo de preguntas de esta sección.</p>
+                    <p style="margin:8px 0 16px 0; font-size:0.95rem;">Has contestado los reactivos clave de esta sección.</p>
+                    ${hasNextModule ? `<button class="btn-action btn-next-module" style="display:inline-block;" onclick="switchModule('${nextModKey}')">Avanzar al Siguiente Módulo &rarr;</button>` : '<p><strong>¡Felicidades! Has finalizado toda la guía interactiva.</strong></p>'}
                 </div>`;
             return;
         }
@@ -296,9 +627,8 @@
         renderQuestion(moduleKey);
     }
 
-    // Inicialización automática asegurada
     document.addEventListener("DOMContentLoaded", () => {
-        renderQuestion('m1b');
+        moduleOrder.forEach(mod => renderQuestion(mod));
     });
 </script>
 </body>
